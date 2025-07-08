@@ -1,0 +1,14 @@
+{
+  "name": "aspnet.foundation",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "docker build -t aspnet.framework .",
+    "tag": "docker tag aspnet.framework satoriassoc.azurecr.io/aspnet.framework:latest",
+    "push": "docker push satoriassoc.azurecr.io/aspnet.framework:latest"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
