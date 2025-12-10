@@ -1,5 +1,5 @@
-ARG REPO=mcr.microsoft.com/dotnet/framework/runtime
-FROM $REPO:4.8.1-20250513-windowsservercore-ltsc2025
+# FROM mcr.microsoft.com/dotnet/framework/runtime:4.8.1-windowsservercore-ltsc2022
+FROM mcr.microsoft.com/windows/servercore:ltsc2022
 
 # since the download fails, we put these in a local folder for install
 RUN mkdir \install
@@ -28,7 +28,7 @@ RUN dism /Online /Quiet /Disable-Feature /FeatureName:IIS-WebServerManagementToo
 RUN del /q "C:\inetpub\wwwroot\*"
 RUN for /D %p IN ("C:\inetpub\wwwroot\*") DO rmdir "%p" /s /q
 RUN %windir%\Microsoft.NET\Framework64\v4.0.30319\ngen update \
-    && %windir%\Microsoft.NET\Framework\v4.0.30319\ngen update
+     && %windir%\Microsoft.NET\Framework\v4.0.30319\ngen update
 
 ENV ROSLYN_COMPILER_LOCATION=C:\RoslynCompilers-3.6.0\tools
 
